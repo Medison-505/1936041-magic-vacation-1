@@ -121,8 +121,9 @@
   position: relative;
   margin: 0 0 6.2rem;
   padding-top: 0.6rem;
-  padding-left: 6.5rem;
   break-inside: avoid;
+  display: flex;
+  align-items: center;
 
   @media (min-width: $stop-scaling) {
     margin: 0 0 62px;
@@ -132,7 +133,6 @@
 
   @media (max-width: $tablet) and (orientation: portrait) {
     margin-bottom: 1rem;
-    padding-left: 5rem;
   }
 
   @media (max-width: $tablet) and (orientation: landscape) {
@@ -140,62 +140,90 @@
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
-    padding-left: 5rem;
     font-size: 1.2rem;
   }
 
-  &::before {
-    content: counter(li);
-    counter-increment: li;
-    position: absolute;
-    top: 0;
-    left: 0;
+  span {
+    position: relative;
+    display: block;
     width: 4.5rem;
     height: 4.5rem;
+    min-width: 4.5rem;
+    min-height: 4.5rem;
     font-family: $font-alt;
     font-weight: 400;
     font-size: 2.4rem;
-    background-color: $c-purple;
-    border-radius: 50%;
     line-height: 5rem;
     text-align: center;
-    animation-name: bounceIn;
-    animation-duration: 0.35s;
+    color: $c-light;
+    animation-name: growInRight;
+    animation-duration: 0.2s;
     animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.38, 1.88, 0.37, 1);
-    animation-delay: 1s;
+    animation-timing-function: ease;
+    animation-delay: 1.175s;
 
     @media (max-width: $tablet) and (orientation: portrait) {
-      top: 1rem;
       width: 2.5rem;
       height: 2.5rem;
+      min-width: 2.5rem;
+      min-height: 2.5rem;
       line-height: 3rem;
       font-size: 1.4rem;
     }
 
     @media (max-width: $mobile) and (orientation: landscape) {
-      top: 0.6rem;
       width: 2.5rem;
       height: 2.5rem;
+      min-width: 2.5rem;
+      min-height: 2.5rem;
       line-height: 3rem;
       font-size: 1.4rem;
     }
+
+    &::before {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $c-purple;
+      border-radius: 50%;
+      animation-name: bounceIn;
+      animation-duration: 0.35s;
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.38, 1.88, 0.37, 1);
+      animation-delay: 1s;
+    }
   }
 
-  &:nth-child(2)::before {
+  &:nth-child(2) span {
     animation-delay: 1.28s;
+
+    &::before {
+      animation-delay: 1.455s;
+    }
   }
 
-  &:nth-child(3)::before {
+  &:nth-child(3) span {
     animation-delay: 1.56s;
+
+    &::before {
+      animation-delay: 1.735s;
+    }
   }
 
-  &:nth-child(4)::before {
+  &:nth-child(4) span {
     animation-delay: 1.84s;
+
+    &::before {
+      animation-delay: 2.015s;
+    }
   }
 
   p {
-    margin: 0;
+    margin: 0 0 0 2rem;
     animation-name: fadeIn, slideInRight;
     animation-duration: 0.35s;
     animation-fill-mode: both;
@@ -257,45 +285,5 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     bottom: 2rem;
     right: 1.5rem;
-  }
-}
-
-@keyframes bounceIn {
-  from {
-    transform: scale(0);
-  }
-
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(1rem);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes growInRight {
-  from {
-    font-size: 0;
-  }
-
-  to {
-    font-size: 100%;
   }
 }
